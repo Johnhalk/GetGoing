@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"strconv"
 	"reflect"
+	"io/ioutil"
+	"log"
+	"net/http"
 )
 
 const myConst float64 = 1.67
@@ -307,4 +310,19 @@ func main() {
 	for k := range statePopulations {
 		fmt.Println(k)
 	}
+
+	// defer function in use to close off the opening of a resource
+
+	res, err := http.Get("http://www.google.com/robots.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer res.Body.Close()
+	body, err := ioutil.ReadAll(res.Body)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s", body)
+
 }
