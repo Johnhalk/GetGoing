@@ -194,4 +194,60 @@ func main() {
 	t := reflect.TypeOf(Element{})
 	field, _ := t.FieldByName("Name")
 	fmt.Println(field.Tag)
+
+	// if statements
+
+	if false {
+		fmt.Println("I will never print")
+	}
+
+	// comparison operators
+	number := 50
+	guess := 30
+
+	if guess < 1 {
+		fmt.Println("The guess must be greater than 1!")
+	} else if guess > 100 {
+		fmt.Println("The guess must be less than 100!")
+	} else {
+		if guess < number {
+		fmt.Println("Too low")
+		}
+		if guess > number {
+			fmt.Println("Too high")
+		}
+		if guess == number {
+			fmt.Println("You got it!")
+		}
+	}
+
+	fmt.Println(number <= guess, number >= guess, number != guess)
+
+	it := 10
+
+	// example of fallthrough, will hit next switch case rather than terminate
+	switch {
+	case it <= 10:
+		fmt.Println("less than or qual to ten")
+		fallthrough
+	case it <= 20:
+		fmt.Println("less than or equal to twenty")
+	default:
+		fmt.Println("greater than twenty.")
+	}
+
+	var inter interface{} = [3]int{3, 4, 5}
+
+	switch inter.(type) {
+	case int:
+		fmt.Println("inter is an int")
+	case string:
+		fmt.Println("inter is string")
+	case float64:
+		fmt.Println("inter is a float64")
+	case float32:
+		fmt.Println("inter is a float32")
+	default:
+		fmt.Println("other type.")
+	}
 }
