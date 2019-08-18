@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"reflect"
 )
 
 const myConst float64 = 1.67
@@ -182,4 +183,15 @@ func main() {
 	bird.SpeedKPH = 48
 	bird.CanFly = false
 	fmt.Println(bird.Name)
+
+	// tags in structs
+
+	type Element struct {
+		Name string `required max:"100"`
+		Hot bool
+	}
+
+	t := reflect.TypeOf(Element{})
+	field, _ := t.FieldByName("Name")
+	fmt.Println(field.Tag)
 }
