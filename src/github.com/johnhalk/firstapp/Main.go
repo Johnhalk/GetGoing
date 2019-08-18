@@ -110,5 +110,76 @@ func main() {
 	fmt.Println(sliceD)
 	fmt.Println(sliceE)
 
+	sliceF := make([]int, 10) // create slice with capacity and length == 10
+	sliceG := make([]int, 10, 100) // create slice with length == 10 and capacity == 100
 
+	fmt.Println(sliceF)
+	fmt.Println(sliceG)
+
+	// maps and structs
+	statePopulations := make(map[string]int)
+	statePopulations = map[string]int{
+		"California": 39250017,
+		"Texas": 23409029,
+		"Florida": 34324521,
+		"New York": 3242432234,
+		"Ohio": 12938901,
+	}
+	// Adds in to map
+	statePopulations["Georgia"] = 12314321
+
+	_, ok := statePopulations["Oho"]
+	fmt.Println(ok)
+	fmt.Println(statePopulations)
+	fmt.Println(len(statePopulations))
+
+
+	type Doctor struct {
+		number int
+		actorName string
+		companions []string
+		episodes []string
+	}
+
+	aDoctor := Doctor{
+		number: 3,
+		actorName: "Jon Pertwee",
+		episodes: []string {
+			"Episode 1",
+			"Episode 2",
+		},
+		companions: []string {
+			"Liz Shaw",
+			"Jo Grant",
+			"Sarah Jane Smith",
+		},
+	}
+
+	fmt.Println(aDoctor);
+	fmt.Println(aDoctor.companions);
+	fmt.Println(aDoctor.episodes[1]);
+
+	anotherDoctor := struct{name string}{name: "John Pertwee"}
+	anotherOtherDoctor := &anotherDoctor
+	anotherOtherDoctor.name = "Tom Baker"
+	fmt.Println(anotherDoctor)
+	fmt.Println(anotherOtherDoctor)
+
+	type Animal struct {
+		Name string
+		Origin string
+	}
+
+	type Bird struct {
+		Animal
+		SpeedKPH float32
+		CanFly bool
+	}
+
+	bird := Bird{}
+	bird.Name = "Emu"
+	bird.Origin = "Australia"
+	bird.SpeedKPH = 48
+	bird.CanFly = false
+	fmt.Println(bird.Name)
 }
