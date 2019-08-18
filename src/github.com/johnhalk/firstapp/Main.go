@@ -250,4 +250,61 @@ func main() {
 	default:
 		fmt.Println("other type.")
 	}
+
+	// for loops
+
+	for value, value2 := 0, 0; 
+	value < 5; 
+	value, value2 = value +1, value +2 {
+		fmt.Println("value ", value)
+		fmt.Println("value2 ", value2)
+	}
+
+	numbers := 0
+	value := 0
+	for {
+		fmt.Println(numbers)
+		numbers++
+		if numbers == 5 {
+			break
+		}
+	}
+
+
+	numbers = 0
+	for ; numbers < 10; numbers++ {
+		fmt.Println(numbers)
+		if numbers == 5 {
+			break
+		}
+	}
+
+	Loop:
+		for numbers = 1; numbers <= 3; numbers++ {
+			for value = 0; value <= 3; value++ {
+				fmt.Println(" loop ", numbers * value)
+				if numbers * value >= 3 {
+					break Loop
+				}
+			}
+		}
+
+
+	s := []int{1, 2, 3}
+
+	for k, v := range s{
+		fmt.Println(k,v)
+	}
+
+	for k, v := range statePopulations {
+		fmt.Println(k, v)
+	}
+
+	for _, v := range statePopulations {
+		fmt.Println(v)
+	}
+
+	for k := range statePopulations {
+		fmt.Println(k)
+	}
 }
